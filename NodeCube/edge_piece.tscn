@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://vrei23mqxksq"]
+
+[ext_resource type="Script" path="res://NodeCube/edge_piece.gd" id="1_si6pv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5uk5h"]
+size = Vector2(0.333, 0.333)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_80ept"]
+radius = 0.15
+
+[node name="EdgePiece" type="Node3D"]
+script = ExtResource("1_si6pv")
+
+[node name="TopPiece" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.167, 2.08165e-12)
+mesh = SubResource("PlaneMesh_5uk5h")
+
+[node name="FrontPiece" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 0.167)
+mesh = SubResource("PlaneMesh_5uk5h")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_80ept")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://q4uq6tmxi4ui"]
+
+[ext_resource type="Script" path="res://NodeCube/cube_face.gd" id="1_ckffd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d3blo"]
+size = Vector2(0.333, 0.333)
+
+[node name="CubeFace" type="Node3D"]
+script = ExtResource("1_ckffd")
+
+[node name="Face" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.167, 2.08165e-12)
+mesh = SubResource("PlaneMesh_d3blo")

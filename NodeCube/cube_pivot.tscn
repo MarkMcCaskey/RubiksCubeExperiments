@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://btove7oyvfxcl"]
+
+[ext_resource type="Script" path="res://NodeCube/cube_pivot.gd" id="1_a7itp"]
+[ext_resource type="PackedScene" uid="uid://q4uq6tmxi4ui" path="res://NodeCube/cube_face.tscn" id="1_aiwc7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x4hek"]
+radius = 0.15
+
+[node name="CubePivot" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+script = ExtResource("1_a7itp")
+
+[node name="CubeFace" parent="." instance=ExtResource("1_aiwc7")]
+face_color = 3
+
+[node name="TopLeft" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333, 2.08165e-12, -0.333)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopLeft"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[node name="TopRight" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333, 2.08165e-12, -0.333)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopRight"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[node name="BottomLeft" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333, 2.08165e-12, 0.333)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomLeft"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[node name="BottomRight" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333, 2.08165e-12, 0.333)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomRight"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[node name="Top" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.333)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Top"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[node name="Bottom" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 0.333)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[node name="Left" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333, 2.08165e-12, 2.08165e-12)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[node name="Right" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333, 2.08165e-12, 2.08165e-12)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right"]
+shape = SubResource("SphereShape3D_x4hek")
+
+[connection signal="area_entered" from="TopLeft" to="." method="_on_top_left_area_entered"]
+[connection signal="area_exited" from="TopLeft" to="." method="_on_top_left_area_exited"]
+[connection signal="area_entered" from="TopRight" to="." method="_on_top_right_area_entered"]
+[connection signal="area_exited" from="TopRight" to="." method="_on_top_right_area_exited"]
+[connection signal="area_entered" from="BottomLeft" to="." method="_on_bottom_left_area_entered"]
+[connection signal="area_exited" from="BottomLeft" to="." method="_on_bottom_left_area_exited"]
+[connection signal="area_entered" from="BottomRight" to="." method="_on_bottom_right_area_entered"]
+[connection signal="area_exited" from="BottomRight" to="." method="_on_bottom_right_area_exited"]
+[connection signal="area_entered" from="Top" to="." method="_on_top_area_entered"]
+[connection signal="area_exited" from="Top" to="." method="_on_top_area_exited"]
+[connection signal="area_entered" from="Bottom" to="." method="_on_bottom_area_entered"]
+[connection signal="area_exited" from="Bottom" to="." method="_on_bottom_area_exited"]
+[connection signal="area_entered" from="Left" to="." method="_on_left_area_entered"]
+[connection signal="area_exited" from="Left" to="." method="_on_left_area_exited"]
+[connection signal="area_entered" from="Right" to="." method="_on_right_area_entered"]
+[connection signal="area_exited" from="Right" to="." method="_on_right_area_exited"]
